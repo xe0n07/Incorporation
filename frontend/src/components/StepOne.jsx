@@ -47,13 +47,27 @@ function StepOne({ onComplete }) {
         </div>
         <div>
           <label className="form-label">Number of Shareholders</label>
-          <input className="input" type="number" name="number_of_shareholders"
-            value={formData.number_of_shareholders} onChange={handleChange} min="1" placeholder="e.g. 3" />
+          <input
+            className="input"
+            type="text"
+            inputMode="numeric"
+            name="number_of_shareholders"
+            value={formData.number_of_shareholders}
+            onChange={(e) => setFormData({ ...formData, number_of_shareholders: e.target.value.replace(/\D/g, '') })}
+            placeholder="e.g. 3"
+        />
         </div>
         <div>
           <label className="form-label">Total Capital Invested (USD)</label>
-          <input className="input" type="number" name="total_capital"
-            value={formData.total_capital} onChange={handleChange} min="0" step="0.01" placeholder="e.g. 100000" />
+          <input
+            className="input"
+            type="text"
+            inputMode="numeric"
+            name="total_capital"
+            value={formData.total_capital}
+            onChange={(e) => setFormData({ ...formData, total_capital: e.target.value.replace(/\D/g, '') })}
+            placeholder="e.g. 100000"
+        />
         </div>
 
         {error && <p className="error-msg">{error}</p>}
